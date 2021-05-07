@@ -32,21 +32,23 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea class="form-control" id="description" rows="5"></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input class="form-control" name="name" id="name" type="text" placeholder="06-321643" />
+                                <input class="form-control" name="phone" id="phone" type="text" placeholder="06-321643" />
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="state">Email</label>
-                                <input class="form-control" name="name" id="name" type="text" placeholder="chalet@med.com" />
+                                <label for="email">Email</label>
+                                <input class="form-control" name="email" id="email" type="text" placeholder="chalet@med.com" />
                             </div>
+                        
                         </div>
+
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success float-right" type="submit">Save & Next</button>

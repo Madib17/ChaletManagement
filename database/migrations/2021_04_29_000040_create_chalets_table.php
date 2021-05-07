@@ -16,18 +16,18 @@ class CreateChaletsTable extends Migration
         Schema::create('chalets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('description');
-            $table->longText('address');
-            $table->integer('poscode');
-            $table->string('phone');
-            $table->string('email');
-            $table->double('latitude');
-            $table->double('longitude');
+            $table->longText('description')->nullable();
+            $table->longText('address')->nullable();
+            $table->integer('poscode')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('district_id');
+            $table->unsignedBigInteger('district_id')->nullable();
             $table->foreign('district_id')->references('id')->on('districts');
             
             $table->timestamps();

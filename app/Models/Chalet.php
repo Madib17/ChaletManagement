@@ -9,6 +9,8 @@ class Chalet extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description','address','poscode','phone','email','latitude','longitude','user_id','district_id'];
+
     public function district(){
         return $this->belongsTo(District::class);
     }

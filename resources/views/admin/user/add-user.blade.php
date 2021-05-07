@@ -11,8 +11,9 @@
                 </div>
                 <div class="card-body">
                     <!-- Registration form-->
-                    <form>
+                    <form action="{{ route('admin.user.add') }}" method="POST">
                         <!-- Form Row-->
+                        @csrf
                         <div class="form-group">
                             <!-- Form Group (first name)-->
                             <div class="form-group">
@@ -23,8 +24,8 @@
                         </div>
                         <!-- Form Group (email address)            -->
                         <div class="form-group">
-                            <label class="small mb-1" for="inputEmailAddress">Email</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" aria-describedby="emailHelp"
+                            <label class="small mb-1" for="email">Email</label>
+                            <input class="form-control" id="email" type="email" name="email" aria-describedby="emailHelp"
                                 placeholder="Enter email address" />
                         </div>
                         <!-- Form Row    -->
@@ -47,8 +48,7 @@
                             </div>
                         </div>
                         <!-- Form Group (create account submit)-->
-                        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block"
-                                href="auth-login-basic.html">Create Account</a></div>
+                        <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" > Create Account</button></div>
                     </form>
                 </div>
             </div>

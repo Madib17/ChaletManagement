@@ -45,22 +45,17 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                            @foreach ($users as $user)
                             <tr>
-                                <td>Ahmad Iman Hafiz</td>
-                                <td>iman@medkad.com</td>
+                            <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>
                                     <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
                                             data-feather="trash-2"></i></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Wafi Isham</td>
-                                <td>wafi@medkad.com</td>
-                                <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                            data-feather="trash-2"></i></button>
-                                </td>
-                            </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>

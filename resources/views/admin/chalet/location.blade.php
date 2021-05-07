@@ -9,7 +9,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
-                            Chalet
+                           {{ $chalet->name }}
                         </h1>
                         <div class="page-header-subtitle">An extended version of the DataTables library, customized for
                             SB Admin Pro</div>
@@ -24,7 +24,7 @@
                 Location
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.chalet.edit') }}" method="POST">
+                <form action="{{ route('admin.chalet.update',$chalet) }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col">
@@ -32,13 +32,17 @@
                                     address</label><input data-element-name="agoda-homes-street-address-input"
                                     name="address" placeholder="Text here" id="address"
                                     class="form-control pac-target-input" autocomplete="off"><span></span></div>
+                                    
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="form-group"><label for="district" class="control-label">State /
-                                    Province</label><select name="district" id="district" class="form-control">
-                                    <option value="3260">Johor</option>
+                            <div class="form-group"><label for="state" class="control-label">State /
+                                    Province</label><select name="state" id="state" class="form-control">
+                                        @foreach ($states as $state)
+                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                        @endforeach
+                                    {{-- <option value="3260">Johor</option>
                                     <option value="3261">Kedah</option>
                                     <option value="3262">Kelantan</option>
                                     <option value="3263">Kuala Lumpur</option>
@@ -52,16 +56,22 @@
                                     <option value="3272">Sabah</option>
                                     <option value="3273">Sarawak</option>
                                     <option value="3274">Selangor</option>
-                                    <option value="3275">Terengganu</option>
+                                    <option value="3275">Terengganu</option> --}}
                                 </select>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group"><label for="citySelectList"
+                            <div class="form-group"><label for="city"
                                     class="control-label">City</label><select
-                                    data-element-name="agoda-homes-city-dropdown" name="cityId" id="citySelectList"
+                                    data-element-name="agoda-homes-city-dropdown" name="city" id="city"
                                     class="form-control">
-                                    <option value=""></option>
+                                    @foreach ($cities as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endforeach
+                                   {{-- <option value="3269">Perlis</option>
+                                     <option value="3270">Penang</option>
+                                    <option value="3272">Sabah</option>
+                                    <option value="3273">Sarawak</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -70,14 +80,17 @@
 
                     <div class="row">
                         <div class="col">
-                            <div class="form-group"><label for="state" class="control-label">District</label><select
-                                    name="stateId" id="state" class="form-control">
-                                    <option value="3260">Ayer Molek</option>
+                            <div class="form-group"><label for="district_id" class="control-label">District</label><select
+                                    name="district_id" id="district_id" class="form-control">
+                                    @foreach ($districts as $district)
+                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                    @endforeach
+                                   {{--  <option value="3260">Ayer Molek</option>
                                     <option value="3261">Kampung Baru</option>
                                     <option value="3262">Taman Sri Melati</option>
                                     <option value="3263">Kandang</option>
                                     <option value="3264">Bandar Melaka </option>
-                                    <option value="3265">Semabok</option>
+                                    <option value="3265">Semabok</option> --}}
                                 </select>
                             </div>
                         </div>

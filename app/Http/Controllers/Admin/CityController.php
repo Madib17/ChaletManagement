@@ -16,7 +16,7 @@ class CityController extends Controller
     public function store(Request $request){
 
         $this->validate(request(),[
-            'name' => 'required|unique:states',
+            'name' => 'required|unique:cities',
             'state_id' => 'required'
         ]);
 

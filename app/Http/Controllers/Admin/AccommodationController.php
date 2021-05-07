@@ -14,4 +14,10 @@ class AccommodationController extends Controller
     public function create(){
         return view('admin.accommodation.add-accommodation');
     }
+
+    public function store(){
+        
+    }
+
+    
 }

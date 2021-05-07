@@ -13,7 +13,7 @@
                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
                     <!-- Nested Sidenav Accordion (Pages -> Account)-->
                     <a class="nav-link" href="{{ route('admin.chalet.list-chalet') }}">List Chalet</a>
-                    <a class="nav-link" href="{{ route('admin.chalet.add-chalet') }}">Add Chalet</a>
+                    <a class="nav-link" href="{{ route('admin.chalet.add') }}">Add Chalet</a>
                     <a class="nav-link" href="{{ route('admin.chalet.my-chalet') }}">My Chalet</a>
                 </nav>
             </div>

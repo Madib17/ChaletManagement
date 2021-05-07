@@ -50,20 +50,23 @@ Route::get('/admin/accommodation-add','Admin\AccommodationController@create')->n
 //User
 Route::get('/admin/user','Admin\UserController@index')->name('admin.user.list');
 Route::get('/admin/user/add','Admin\UserController@create')->name('admin.user.add');
+Route::post('/admin/user/add','Admin\UserController@store')->name('admin.user.store');
 
 
 //Report
 Route::get('/admin/report','Admin\ReportController@index')->name('admin.report');
 
+
 //Chalet
 Route::get('/admin/chalet/list-chalet','Admin\ChaletController@index')->name('admin.chalet.list-chalet');
 Route::get('/admin/chalet/my-chalet','Admin\ChaletController@show')->name('admin.chalet.my-chalet');
 
-Route::get('/admin/chalet/add-chalet','Admin\ChaletController@create')->name('admin.chalet.add-chalet');
-Route::post('/admin/chalet/location','Admin\ChaletController@edit')->name('admin.chalet.edit');
-Route::post('/admin/chalet/accommodation','Admin\ChaletController@store')->name('admin.chalet.store');
+Route::get('/admin/chalet/create','Admin\ChaletController@create')->name('admin.chalet.add');
+Route::post('/admin/chalet/create','Admin\ChaletController@store')->name('admin.chalet.store');
 
-Route::get('/admin/chalet/accommodation','Admin\ChaletController@createAccommodation')->name('admin.chalet.accommodation');
+
+Route::get('/admin/chalet/{chalet}/location','Admin\ChaletController@edit')->name('admin.chalet.edit');
+Route::post('/admin/chalet/location','Admin\ChaletController@update')->name('admin.chalet.update');
 
 
 
