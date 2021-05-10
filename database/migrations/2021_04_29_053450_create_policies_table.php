@@ -16,9 +16,9 @@ class CreatePoliciesTable extends Migration
         Schema::create('policies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description',100);
+            $table->longText('description');
+            $table->unsignedBigInteger('chalet_id')->nullable();
 
-            $table->unsignedBigInteger('chalet_id');
             $table->foreign('chalet_id')->references('id')->on('chalets')->onUpdate('cascade')->onDelete('cascade');
             
             $table->timestamps();

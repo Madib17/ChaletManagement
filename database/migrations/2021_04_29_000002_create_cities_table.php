@@ -17,7 +17,7 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->unsignedBigInteger('state_id');
+            $table->unsignedBigInteger('state_id')->nullable();
             $table->foreign('state_id')->references('id')->on('states');
             
             $table->timestamps();

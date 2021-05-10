@@ -24,14 +24,28 @@
                 <div class="col ">Add Accommodation</div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.accommodation.add') }}" method="POST">
+                <form action="{{ route('admin.accommodation.store') }}" method="POST">
                     <div class="form-group">
                         @csrf
-                        <label for="state">Accommodation Name</label>
+                        <label for="name">Accommodation Name</label>
                         <input class="form-control" name="name" id="name" type="text" placeholder="Parking , Wifi" />
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit">Add Accommodation</button>
+                        <label for="type" >Type</label>
+                        <select name="type" id="type" class="form-control">
+                            <option value="standard">Amenity</option>
+                            <option value="access">Access</option>
+                            <option value="kitchen">Kitchen</option>
+                            <option value="bathroom">Bathroom</option>
+                            <option value="outdoor">Outdoor</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="family">Family</option>
+                            <option value="safety">Safety</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Add Accommodation</button>
                     </div>
                 </form>
             </div>

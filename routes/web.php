@@ -36,15 +36,18 @@ Route::get('/admin/address/district','Admin\DistrictController@create')->name('a
 Route::post('/admin/address/district-store','Admin\DistrictController@store')->name('admin.address.storeDistrict');
 
 //Account
-Route::get('/admin/account/profile','Admin\ProfileController@show')->name('admin.account.profile');
+Route::get('/admin/account/profile','Admin\ProfileController@edit')->name('admin.account.profile');
+Route::post('/admin/account/{user}/profile','Admin\ProfileController@update')->name('admin.account.updateProfile');
 
 
-Route::get('/admin/account/security','Admin\SecurityController@show')->name('admin.account.security');
+Route::get('/admin/account/security','Admin\SecurityController@edit')->name('admin.account.security');
+Route::post('/admin/account/security','Admin\SecurityController@update')->name('admin.account.updateSecurity');
 
 
 //Accommodation
-Route::get('/admin/accommodation','Admin\AccommodationController@index')->name('admin.accommodation.list');
-Route::get('/admin/accommodation-add','Admin\AccommodationController@create')->name('admin.accommodation.add');
+Route::get('/admin/accommodation','Admin\AccommodationController@index')->name('admin.accommodation.index');
+Route::get('/admin/accommodation/create','Admin\AccommodationController@create')->name('admin.accommodation.create');
+Route::post('/admin/accommodation/store','Admin\AccommodationController@store')->name('admin.accommodation.store');
 
 
 //User
@@ -54,7 +57,7 @@ Route::post('/admin/user/add','Admin\UserController@store')->name('admin.user.st
 
 
 //Report
-Route::get('/admin/report','Admin\ReportController@index')->name('admin.report');
+Route::get('/admin/report','Admin\ReportController@index')->name('admin.report.index');
 
 
 //Chalet
@@ -66,8 +69,7 @@ Route::post('/admin/chalet/create','Admin\ChaletController@store')->name('admin.
 
 
 Route::get('/admin/chalet/{chalet}/location','Admin\ChaletController@edit')->name('admin.chalet.edit');
-Route::post('/admin/chalet/location','Admin\ChaletController@update')->name('admin.chalet.update');
+Route::post('/admin/chalet/{chalet}/location','Admin\ChaletController@update')->name('admin.chalet.update');
 
-
-
-
+Route::get('/admin/chalet/{chalet}/accommodation','Admin\ChaletController@createAccommodation')->name('admin.chalet.createAccommodation');
+Route::post('/admin/chalet/{chalet}/accommodation','Admin\ChaletController@storeAccommodation')->name('admin.chalet.storeAccommodation');

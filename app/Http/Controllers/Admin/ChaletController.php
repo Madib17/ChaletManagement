@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Chalet;
 use App\Models\State;
 use App\Models\City;
+use App\Models\Accommodation;
 use App\Models\District;
 
 class ChaletController extends Controller
@@ -60,6 +61,7 @@ class ChaletController extends Controller
     }
 
     public function update(Request $request, Chalet $chalet){
+        //dd($request->all());
          $this->validate(request(),[
             'address' => 'required|unique:chalets',
             'state' => 'required',
@@ -74,9 +76,20 @@ class ChaletController extends Controller
         $chalet->address = $data['address'];
         $chalet->poscode = $data['poscode'];
         $chalet->district_id = $data['district_id'];
+        $chalet->save();
 
-        $chalet->update($data);
-        
-         return redirect()->back();
+        // $chalet->update($data);
+        return redirect()->action([ChaletController::class, 'createAccommodation'],['chalet' => $chalet->id]);
+    }
+
+    public function createAccommodation(Chalet $chalet){
+        return view('admin.chalet.accommodation')->with('chalets',$chalet)->with('accommodations',Accommodation::all());
+    }
+
+    public function storeAccommodation(Request $request,Chalet $chalet){
+        dd($request->all());
+        /* validate(request(),[
+
+        ]) */
     }
 }

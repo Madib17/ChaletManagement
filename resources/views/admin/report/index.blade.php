@@ -30,34 +30,34 @@
                         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>Report ID</th>
                                     <th>Report Type</th>
                                     <th>Report Detail</th>
+                                    <th>Report Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>Report ID</th>
                                     <th>Report Type</th>
                                     <th>Report Detail</th>
+                                    <th>Report Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <tr>
-                                    <td>False Infomation</td>
-                                    <td>This Chalet were so stingy. Room full of rubbish</td>
+                                    @foreach ($reports as $report)
+                                    <td>{{ $report->id }}</td>
+                                    <td>{{ $report->type }}</td>
+                                    <td>{{ $report->reviews }}</td>
+                                    <td>{{ $report->created_at->diffForHumans() }}</td>
                                     <td>
-                                        <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark" ><i
                                                 data-feather="trash-2"></i></button>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Sexual Assault</td>
-                                    <td>The Staff was so hot. Nyum</td>
-                                    <td>
-                                        <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                                data-feather="trash-2"></i></button>
-                                    </td>
+                                    @endforeach
                                 </tr>
                             </tbody>
                         </table>

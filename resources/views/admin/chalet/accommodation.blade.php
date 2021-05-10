@@ -26,74 +26,23 @@
             <div class="card-body">
                 <div class="sbp-preview">
                     <div class="sbp-preview-content">
-                        <form action="{{ route('admin.chalet.store') }}" method="POST">
+                        <form action="{{ route('admin.chalet.storeAccommodation',$chalets) }}" method="POST">
                             @csrf
                             <div class="row">
-                                <div class="col">
-                                    <div class="custom-control custom-checkbox custom-control-solid">
-                                        <input class="custom-control-input" id="customCheckSolid1" name="accommodation[]" type="checkbox">
-                                        <label class="custom-control-label" for="customCheckSolid1">Air conditioning</label>
-                                    </div>
+                                @foreach ($accommodations as $accommodation)
+                                
+                                <div class="custom-control custom-checkbox ml-4">
+                                    <input class="custom-control-input" id="accommodation[{{ $accommodation->id }}]"  value="{{ $accommodation->id }}" type="checkbox">
+                                    <label class="custom-control-label" for="accommodation[{{ $accommodation->id }}]">{{ $accommodation->name }}</label>
                                 </div>
-                                <div class="col">
-                                    <div class="custom-control custom-checkbox custom-control-solid">
-                                        <input class="custom-control-input" id="customCheckSolid1" name="accommodation[]" type="checkbox">
-                                        <label class="custom-control-label" for="customCheckSolid1">Air conditioning</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="custom-control custom-checkbox custom-control-solid">
-                                        <input class="custom-control-input" id="customCheckSolid1" name="accommodation[]" type="checkbox">
-                                        <label class="custom-control-label" for="customCheckSolid1">Air conditioning</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="custom-control custom-checkbox custom-control-solid">
-                                        <input class="custom-control-input" id="customCheckSolid1" name="accommodation[]" type="checkbox">
-                                        <label class="custom-control-label" for="customCheckSolid1">Air conditioning</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="custom-control custom-checkbox custom-control-solid">
-                                        <input class="custom-control-input" id="customCheckSolid1" name="accommodation[]" type="checkbox">
-                                        <label class="custom-control-label" for="customCheckSolid1">Air conditioning</label>
-                                    </div>
+                                @endforeach
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <label class="amenity amenity-25 checkbox-inline" title="">
-                                        <input data-element-name="agoda-homes-recommended-amenities-selector"
-                                            data-element-value="25" type="checkbox"><span class="checkbox-ui"><i
-                                                class="ficon"></i></span>Air conditioning
-                                    </label>
-                                </div><div class="col">
-                                    <label class="amenity amenity-25 checkbox-inline" title="">
-                                        <input data-element-name="agoda-homes-recommended-amenities-selector"
-                                            data-element-value="25" type="checkbox"><span class="checkbox-ui"><i
-                                                class="ficon"></i></span>Air conditioning
-                                    </label>
-                                </div><div class="col">
-                                    <label class="amenity amenity-25 checkbox-inline" title="">
-                                        <input data-element-name="agoda-homes-recommended-amenities-selector"
-                                            data-element-value="25" type="checkbox"><span class="checkbox-ui"><i
-                                                class="ficon"></i></span>Air conditioning
-                                    </label>
-                                </div><div class="col">
-                                    <label class="amenity amenity-25 checkbox-inline" title="">
-                                        <input data-element-name="agoda-homes-recommended-amenities-selector"
-                                            data-element-value="25" type="checkbox"><span class="checkbox-ui"><i
-                                                class="ficon"></i></span>Air conditioning
-                                    </label>
-                                </div><div class="col">
-                                    <label class="amenity amenity-25 checkbox-inline" title="">
-                                        <input data-element-name="agoda-homes-recommended-amenities-selector"
-                                            data-element-value="25" type="checkbox"><span class="checkbox-ui"><i
-                                                class="ficon"></i></span>Air conditioning
-                                    </label>
-                                </div>
+                                <button class="btn btn-success float-right" type="submit">Save & Next</button>
                             </div>
                         </form>
+                </div>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@ class Chalet extends Model
     }
 
     public function accommodations(){
-        return $this->hasMany(Accommodation::class);
+        return $this->belongsToMany(Accommodation::class);
     }
 
     public function photos(){

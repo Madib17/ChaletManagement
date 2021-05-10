@@ -45,11 +45,12 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form action="{{ route('admin.account.profile') }} " method="POST">
+                        <form action="{{ route('admin.account.updateProfile', Auth::user()->id) }} " method="POST">
                             <!-- Form Group (username)-->
+                            @csrf
                             <div class="form-group">
                                 <label class="small mb-1" for="name">Full Name</label>
-                                <input class="form-control" id="name" type="text"
+                                <input class="form-control" id="name" name="name" type="text"
                                     placeholder="Enter your username" value="{{ Auth::user()->name }}" />
                             </div>
                             <!-- Form Row-->
@@ -57,18 +58,10 @@
                             <!-- Form Group (email address)-->
                             <div class="form-group">
                                 <label class="small mb-1" for="email">Email address</label>
-                                <input class="form-control" id="email" type="email"
+                                <input class="form-control" id="email" name="email" type="email"
                                     placeholder="Enter your email address" value="{{ Auth::user()->email }}" />
                             </div>
-                            <!-- Form Row-->
-                            <div class="form-row">
-                                <!-- Form Group (phone number)-->
-                                <div class="form-group col-md-6">
-                                    <label class="small mb-1" for="inputPhone">Phone number</label>
-                                    <input class="form-control" id="inputPhone" type="tel"
-                                        placeholder="Enter your phone number" value="011111111" />
-                                </div>
-                            </div>
+                           
                             <!-- Save changes button-->
                             <button class="btn btn-primary" type="submit">Save changes</button>
                         </form>

@@ -24,7 +24,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col ">List Of Admin</div>
-                    <div class="col "><button class="btn btn-primary float-right">Add User</button></div>
+                    <div class="col "><a href="{{ route('admin.user.add') }}"><button class="btn btn-primary float-right">Add User</button></a></div>
                 </div>
             </div>
             <div class="card-body">

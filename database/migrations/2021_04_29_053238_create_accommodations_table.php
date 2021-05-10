@@ -16,12 +16,8 @@ class CreateAccommodationsTable extends Migration
         Schema::create('accommodations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('detail');
-            $table->string('type');
-
-            
-            $table->unsignedBigInteger('chalet_id');
-            $table->foreign('chalet_id')->references('id')->on('chalets');
+            $table->string('type')->nullable();
+            $table->integer('value')->nullable();
             $table->timestamps();
         });
     }

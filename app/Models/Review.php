@@ -12,4 +12,8 @@ class Review extends Model
     public function chalet(){
         return $this->belongsTo(Chalet::class);
     }
+
+    public function report(){
+        return $this->belongsTo(Report::class);
+    }
 }

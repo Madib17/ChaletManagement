@@ -9,7 +9,12 @@ class Accommodation extends Model
 {
     use HasFactory;
 
-    public function chalet(){
-        return $this->belongsTo(Chalet::class);
+    protected $fillable = [
+        'name',
+        'type'
+    ];
+
+    public function chalets(){
+        return $this->belongsToMany(Chalet::class);
     }
 }

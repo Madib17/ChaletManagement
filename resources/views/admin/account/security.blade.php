@@ -31,7 +31,7 @@
                 <div class="card mb-4">
                     <div class="card-header">Change Password</div>
                     <div class="card-body">
-                        <form>
+                        <form action="{{ route('admin.account.updateSecurity',Auth::user()->id) }}">
                             <!-- Form Group (current password)-->
                             <div class="form-group">
                                 <label class="small mb-1" for="currentPassword">Current Password</label>
@@ -50,7 +50,7 @@
                                 <input class="form-control" id="confirmPassword" type="password"
                                     placeholder="Confirm new password" />
                             </div>
-                            <button class="btn btn-primary" type="button">Save</button>
+                            <button class="btn btn-primary" type="submit">Save</button>
                         </form>
                     </div>
                 </div>

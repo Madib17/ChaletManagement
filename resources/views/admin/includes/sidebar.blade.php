@@ -55,13 +55,13 @@
             <!-- Sidenav Heading (Addons)-->
             <div class="sidenav-menu-heading">Accommodation</div>
             <!-- Sidenav Link (Charts)-->
-            <a class="nav-link" href="{{ route('admin.accommodation.list') }}">
+            <a class="nav-link" href="{{ route('admin.accommodation.index') }}">
                 <div class="nav-link-icon"><i data-feather="bar-chart"></i></div>
                 Accommodation
             </a>
             <div class="sidenav-menu-heading">Report</div>
             <!-- Sidenav Link (Tables)-->
-            <a class="nav-link" href="{{ route('admin.report') }}">
+            <a class="nav-link" href="{{ route('admin.report.index') }}">
                 <div class="nav-link-icon"><i data-feather="filter"></i></div>
                 Report
             </a>
