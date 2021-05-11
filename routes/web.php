@@ -73,3 +73,9 @@ Route::post('/admin/chalet/{chalet}/location','Admin\ChaletController@update')->
 
 Route::get('/admin/chalet/{chalet}/accommodation','Admin\ChaletController@createAccommodation')->name('admin.chalet.createAccommodation');
 Route::post('/admin/chalet/{chalet}/accommodation','Admin\ChaletController@storeAccommodation')->name('admin.chalet.storeAccommodation');
+
+Route::get('/admin/chalet/{chalet}/policy','Admin\ChaletController@createPolicy')->name('admin.chalet.createPolicy');
+Route::post('/admin/chalet/{chalet}/policy','Admin\ChaletController@storePolicy')->name('admin.chalet.storePolicy');
+
+Route::get('/admin/chalet/{chalet}/room','Admin\ChaletController@createRoom')->name('admin.chalet.createRoom');
+Route::post('/admin/chalet/{chalet}/room','Admin\ChaletController@storeRoom')->name('admin.chalet.storeRoom');

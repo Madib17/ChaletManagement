@@ -62,9 +62,7 @@
                         </div>
                         <div class="col">
                             <div class="form-group"><label for="city"
-                                    class="control-label">City</label><select
-                                    data-element-name="agoda-homes-city-dropdown" name="city" id="city"
-                                    class="form-control">
+                                    class="control-label">City</label><select name="city" id="city" class="form-control">
                                     @foreach ($cities as $city)
                                         <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach

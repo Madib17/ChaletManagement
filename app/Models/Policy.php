@@ -9,6 +9,11 @@ class Policy extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+    ];
+
     public function chalet(){
         return $this->belongsTo(Chalet::class);
     }

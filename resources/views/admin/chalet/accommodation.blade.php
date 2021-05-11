@@ -32,14 +32,16 @@
                                 @foreach ($accommodations as $accommodation)
                                 
                                 <div class="custom-control custom-checkbox ml-4">
-                                    <input class="custom-control-input" id="accommodation[{{ $accommodation->id }}]"  value="{{ $accommodation->id }}" type="checkbox">
-                                    <label class="custom-control-label" for="accommodation[{{ $accommodation->id }}]">{{ $accommodation->name }}</label>
+                                    <input class="custom-control-input" name="accommodations[]" id="{{ $accommodation->id }}" value="{{ $accommodation->id }}" type="checkbox">
+                                    <label class="custom-control-label" for="{{ $accommodation->id }}">{{ $accommodation->name }}</label>
                                 </div>
                                 @endforeach
                                 </div>
                             </div>
                             <div class="row">
-                                <button class="btn btn-success float-right" type="submit">Save & Next</button>
+                                <div class="col">
+                                    <button class="btn btn-success float-right" type="submit">Save & Next</button>
+                                </div>
                             </div>
                         </form>
                 </div>

@@ -14,11 +14,16 @@ class SecurityController extends Controller
 
     public function update(Request $request,User $user){
         $request->validate([
-            'password' => ['required', new MatchOldPassword],
-            'new_password' => ['required'],
-            'password_confirmation' => ['same:new_password'],
+            'currentPassword' => ['required', new MatchOldPassword],
+            'newPassword' => ['required'],
+            'confirmPassword' => ['same:new_password'],
         ]);
 
+        $data = request()->only(['currentPassword', 'newPassword', 'confirmPassword']);
+
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->newPassword)]);
+
+        return redirect(route('admin.user.profile'));
     }
 
 }

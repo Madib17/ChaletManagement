@@ -9,6 +9,8 @@ use App\Models\State;
 use App\Models\City;
 use App\Models\Accommodation;
 use App\Models\District;
+use App\Models\Policy;
+use App\Models\Room;
 
 class ChaletController extends Controller
 {
@@ -83,13 +85,52 @@ class ChaletController extends Controller
     }
 
     public function createAccommodation(Chalet $chalet){
-        return view('admin.chalet.accommodation')->with('chalets',$chalet)->with('accommodations',Accommodation::all());
+        return view('admin.chalet.accommodation')->with('chalets',$chalet->id)->with('accommodations',Accommodation::all());
     }
 
     public function storeAccommodation(Request $request,Chalet $chalet){
-        dd($request->all());
-        /* validate(request(),[
+     
+        $chalet->accommodations()->sync( $request->accommodations );
 
-        ]) */
+        return redirect()->action([ChaletController::class, 'createPolicy'],['chalet' => $chalet->id]);
+        }
+
+    public function createPolicy(Chalet $chalet){
+        return view('admin.chalet.policy')->with('chalets',$chalet);
     }
+
+    public function storePolicy(Request $request, Chalet $chalet){
+        $this->validate(request(),[
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        Policy::create($request->all());
+
+        return redirect()->action([ChaletController::class, 'createRoom'],['chalet' => $chalet->id]);
+
+    }
+
+    public function createRoom(Chalet $chalet){
+        return view('admin.chalet.room')->with('chalets',$chalet);
+    }
+
+    public function storeRoom(Request $request, Chalet $chalet){
+        $this->validate(request(),[
+            'bedroom' => 'required',
+            'type' => 'required',
+            'adult' => 'required',
+            'child' => 'required',
+            'price' => 'required',
+            'size' => 'required',
+            'detail' => 'required'
+        ]);
+
+        $request['chalet_id'] = $chalet->id;
+
+        Room::create($request->all());
+        // dd($request->all());
+        return redirect()->back();
+    }
+
 }
