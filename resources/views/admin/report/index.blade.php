@@ -47,18 +47,18 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                @foreach ($reports as $report)
                                 <tr>
-                                    @foreach ($reports as $report)
                                     <td>{{ $report->id }}</td>
                                     <td>{{ $report->type }}</td>
-                                    <td>{{ $report->reviews }}</td>
-                                    <td>{{ $report->created_at->diffForHumans() }}</td>
+                                    <td>{{ $report->detail }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($report->created_at)->diffForHumans() }}</td>
                                     <td>
                                         <button class="btn btn-datatable btn-icon btn-transparent-dark" ><i
                                                 data-feather="trash-2"></i></button>
                                     </td>
-                                    @endforeach
                                 </tr>
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>

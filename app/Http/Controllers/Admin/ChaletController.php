@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Chalet;
@@ -11,6 +13,7 @@ use App\Models\Accommodation;
 use App\Models\District;
 use App\Models\Policy;
 use App\Models\Room;
+use App\Models\Photo;
 
 class ChaletController extends Controller
 {
@@ -18,7 +21,7 @@ class ChaletController extends Controller
         return view('admin.chalet.list-chalet')->with('chalets',Chalet::all());
     }
 
-    public function show(){
+    public function showMyChalet(){
         return view('admin.chalet.my-chalet')->with('chalets',Chalet::where('user_id',auth()->id())->get());
     }
 
@@ -48,13 +51,13 @@ class ChaletController extends Controller
         /* $chalet = Chalet::select('id')->where('user_id',$id)->orderBy('id','desc')->first()->get(); */
 
         /* dd($chalet); */ 
-        return redirect()->action([ChaletController::class, 'edit'],['chalet' => $chalet->id]);
+        return redirect()->action([ChaletController::class, 'createLocation'],['chalet' => $chalet->id]);
         /* return redirect(route('admin.chalet.edit',$chalet->id)); */
         /* return view('admin.chalet.location')->withId($chalet_id)->withName($name); */
         
     }
 
-    public function edit(Chalet $chalet){
+    public function createLocation(Chalet $chalet){
         return view('admin.chalet.location')
         ->with('states',State::all())
         ->with('cities',City::all())
@@ -62,7 +65,7 @@ class ChaletController extends Controller
         ->with('chalet',$chalet);
     }
 
-    public function update(Request $request, Chalet $chalet){
+    public function storeLocation(Request $request, Chalet $chalet){
         //dd($request->all());
          $this->validate(request(),[
             'address' => 'required|unique:chalets',
@@ -130,7 +133,31 @@ class ChaletController extends Controller
 
         Room::create($request->all());
         // dd($request->all());
+
+        return redirect()->action([ChaletController::class, 'createPhoto'],['chalet' => $chalet->id]);
+
+    }
+
+    public function createPhoto(Chalet $chalet){
+        return view('admin.chalet.photo')->with('chalets', $chalet);
+    }
+
+    public function storePhoto(Request $request,Chalet $chalet){
+        
+        if ($request->hasFile('photo')) {
+            $fileName = $chalet->id.'-'.date("Y-m-d").'.'.$request->photo->getClientOriginalExtension();
+            Storage::disk('public')->put($fileName,File::get($request->photo));
+            Photo::insert([
+                'name' => $fileName,
+                'chalet_id' => $chalet->id,
+            ]);
+        }
+
         return redirect()->back();
+    }
+
+    public function show(Chalet $chalet){
+        return view('admin.chalet.show')->with('chalet',$chalet);
     }
 
 }

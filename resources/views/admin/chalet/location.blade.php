@@ -24,7 +24,7 @@
                 Location
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.chalet.update',$chalet) }}" method="POST">
+                <form action="{{ route('admin.chalet.storeLocation',$chalet) }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col">
