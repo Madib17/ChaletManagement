@@ -20,10 +20,8 @@ class CreateReviewsTable extends Migration
             $table->string('email');
             $table->integer('point');
             $table->unsignedBigInteger('chalet_id');
-            $table->unsignedBigInteger('report_id');
 
             $table->foreign('chalet_id')->references('id')->on('chalets')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('report_id')->references('id')->on('reports')->onUpdate('cascade')->onDelete('cascade');
             
             $table->timestamps();
         });

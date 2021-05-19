@@ -14,6 +14,8 @@ use App\Models\District;
 use App\Models\Policy;
 use App\Models\Room;
 use App\Models\Photo;
+use App\Models\Bedroom;
+use App\Models\Bed;
 
 class ChaletController extends Controller
 {
@@ -115,18 +117,18 @@ class ChaletController extends Controller
     }
 
     public function createRoom(Chalet $chalet){
-        return view('admin.chalet.room')->with('chalets',$chalet);
+        return view('admin.chalet.room')->with('chalets',$chalet)->with('beds',Bed::all())->with('bedrooms',Bedroom::all());
     }
 
     public function storeRoom(Request $request, Chalet $chalet){
         $this->validate(request(),[
-            'bedroom' => 'required',
-            'type' => 'required',
+            'bedroom_id' => 'required',
+            'bed_id' => 'required',
             'adult' => 'required',
             'child' => 'required',
             'price' => 'required',
             'size' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
         ]);
 
         $request['chalet_id'] = $chalet->id;

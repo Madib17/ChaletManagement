@@ -27,27 +27,21 @@
                 <form action="{{ route('admin.chalet.storeRoom',$chalets) }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="bedroom" class="control-label">Bedroom</label>
-                        <select name="bedroom" placeholder="placeholder" data-element-index="0" id="bedRoomIndex-1"
-                            class="form-control">
-                            <option value="superior">superior</option>
-                            <option value="deluxe">deluxe</option>
-                            <option value="basic">basic</option>
+                        <label for="bedroom_id" class="control-label">Bedroom</label>
+                        <select name="bedroom_id" placeholder="placeholder" data-element-index="0" id="bedRoomIndex-1"
+                        class="form-control">
+                        @foreach($bedrooms as $bedroom) 
+                            <option value="{{ $bedroom->id }}">{{ $bedroom->name }}</option>
+                        @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="type" class="control-label">Bed Type</label>
-                        <select name="type" placeholder="placeholder" data-element-index="0" id="bedRoomIndex-1"
+                        <label for="bed_id" class="control-label">Bed Type</label>
+                        <select name="bed_id" placeholder="placeholder" data-element-index="0" id="bedRoomIndex-1"
                             class="form-control">
-                            <option value="single bed">single bed</option>
-                            <option value="semi double-bed">semi double-bed</option>
-                            <option value="double bed">double bed</option>
-                            <option value="queen bed">queen bed</option>
-                            <option value="king bed">king bed</option>
-                            <option value="super king bed">super king bed</option>
-                            <option value="bunk bed">bunk bed</option>
-                            <option value="sofa bed">sofa bed</option>
-                            <option value="futon">futon</option>
+                            @foreach($beds as $bed) 
+                                <option value="{{ $bed->id }}">{{ $bed->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="row">
