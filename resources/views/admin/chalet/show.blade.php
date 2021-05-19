@@ -116,9 +116,16 @@
                  <div class="row">
                     @foreach ($chalet->photos as $photo)
                      <div class="col">
-                         {{ $photo->name }}
-                         <img src="{{ env('APP_URL')}}/storage/{{ $photo->name }}" alt="" class="img-thumbnail">
+                         <img src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" class="img-thumbnail rounded mx-auto d-block lift">
                      </div>
+                     <div class="col">
+
+                     </div>
+                     <div class="col">
+                         
+                    </div>
+
+
                      @endforeach
                  </div>
              </div>

@@ -41,7 +41,7 @@
                                 <hr class="my-0" />
                                 <div class="card-body p-5">
                                     <!-- Login form-->
-                                    <form method="POST" action="{{  route('login')  }}">
+                                    <form method="POST" action="{ route('login') }}">
                                         @csrf
                                         <!-- Form Group (email address)-->
                                         <div class="form-group">
