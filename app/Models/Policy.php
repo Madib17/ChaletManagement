@@ -12,6 +12,7 @@ class Policy extends Model
     protected $fillable = [
         'title',
         'description',
+        'chalet_id',
     ];
 
     public function chalet(){

@@ -21,10 +21,20 @@
          <div class="card">
              <div class="card-header">Basic Information</div>
              <div class="card-body">
-                 <div class="form-group">
-                     <p class="h4">Description</p>
-                     <textarea name="description" id="description" rows="8" readonly
+                 <div class="row">
+                     <div class="col">
+                        <p class="h4">Description</p>
+                     </div>
+                     <div class="col">
+                        <a href="{{ route('admin.accommodation.create') }}"><button
+                            class="btn btn-primary float-right">Edit Chalet</button></a>
+                     </div>
+                 </div>
+                 <div class="row mt-2">
+                     <div class="col">
+                         <textarea name="description" id="description" rows="8" readonly
                          class="form-control">{{ $chalet->description }}</textarea>
+                     </div>
                  </div>
                  <hr>
                  <div class="row">
@@ -59,14 +69,14 @@
                         <p class="h4">Rooms</p> 
                      </div>
                      <div class="col">
-                        <a href="{{ route('admin.accommodation.create') }}"><button
+                        <a href="{{ route('admin.room.create', $chalet->id) }}"><button
                             class="btn btn-primary float-right">Add More Room</button></a>
                      </div>
                  </div>
                  <div class="row">
                      @foreach ($chalet->rooms as $room)
                     <div class="col-lg-4 mb-4">
-                        <a class="card lift lift-sm h-100" href="#!">
+                        <a class="card lift lift-sm h-100" href="{{ route('admin.room.edit',['chalet'=>$chalet->id,'room'=>$room->id]) }}">
                             <div class="card-body">
                                 <h5 class="card-title text-primary mb-2">
                                     <i class="mr-2" data-feather="edit-2"></i>
@@ -85,14 +95,14 @@
                          <p class="h4">Policies</p>
                      </div>
                      <div class="col">
-                        <a href="{{ route('admin.accommodation.create') }}"><button
+                        <a href="{{ route('admin.policy.create',$chalet) }}"><button
                             class="btn btn-primary float-right">Add More Policy</button></a>
                      </div>
                  </div>
                  <div class="row">
                      <div class="col mt-4">
                          @foreach ($chalet->policies as $policy)
-                         <a class="card card-icon lift lift-sm mb-4" href="knowledge-base-article.html">
+                         <a class="card card-icon lift lift-sm mb-4" href="{{ route('admin.policy.edit',['chalet'=>$chalet->id,'policy'=>$policy->id]) }}">
                              <div class="card-body">
                                  <div class="d-flex align-items-center justify-content-between">
                                      <div class="h5 card-title mb-0">{{ $policy->title }}</div>
@@ -109,24 +119,57 @@
                          <p class="h4">Photo</p>
                      </div>
                      <div class="col">
-                        <a href="{{ route('admin.accommodation.create') }}"><button
+                        <a href="{{ route('admin.photo.create',$chalet) }}"><button
                             class="btn btn-primary float-right">Add More Photo</button></a>
                      </div>
                  </div>
                  <div class="row">
                     @foreach ($chalet->photos as $photo)
                      <div class="col">
-                         <img src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" class="img-thumbnail rounded mx-auto d-block lift">
-                     </div>
+                        <div class="card lift">
+                            <img class="card-img-top" src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" alt="{{ $photo->name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $photo->name }}</h5>
+                                <p class="card-text">{{ $photo->name }}</p>
+                            </div>
+                        </div>
+                         {{-- <img src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" class="img-thumbnail rounded mx-auto d-block lift"> --}}
+                        </div>
+                        @endforeach
+                 </div>
+                 <hr>
+                 <div class="row">
                      <div class="col">
-
+                         <p class="h4">Review</p>
                      </div>
+                 </div>
+                 <div class="row">
                      <div class="col">
-                         
-                    </div>
-
-
-                     @endforeach
+                         @foreach ($chalet->reviews as $review)
+                             
+                         <div class="card card-header-actions mt-4 lift">
+                             <div class="card-header">
+                                 {{ $review->name }} 
+                                 <div class="dropdown no-caret">
+                                     <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                         <i data-feather="more-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#!">Report</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div>
+                                        @for ($i = 0; $i < $review->point; $i++)
+                                            <i data-feather="star"></i>
+                                        @endfor
+                                    </div>
+                                    {{ $review->detail }}
+                                </div>
+                            </div>
+                            @endforeach
+                     </div>
                  </div>
              </div>
          </div>

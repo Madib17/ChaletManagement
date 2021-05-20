@@ -110,6 +110,8 @@ class ChaletController extends Controller
             'description' => 'required'
         ]);
 
+        $request['chalet_id'] = $chalet->id;
+        
         Policy::create($request->all());
 
         return redirect()->action([ChaletController::class, 'createRoom'],['chalet' => $chalet->id]);

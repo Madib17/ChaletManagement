@@ -11,8 +11,6 @@
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
                             Photo
                         </h1>
-                        <div class="page-header-subtitle">An extended version of the DataTables library, customized for
-                            SB Admin Pro</div>
                     </div>
                 </div>
             </div>
@@ -21,17 +19,19 @@
     <div class="container mt-n10">
         <div class="card mb-4">
             <div class="card-header">
-                Add Photo
+                Add Policy
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.chalet.storePhoto',$chalets) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.photo.store',$chalet) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Select Photo:</label>
+                        <input class="form-control" type="file" name="photo" id="photo" multiple>
+                      </div>
                     <div class="form-group">
-                        <label for="photo">Photo</label>
-                        <input type="file" name="photo" id="photo" class="form-control">
-                    </div>
-                    <div class="form-group">
+                        <a href="{{ route('admin.chalet.show',$chalet) }}"><button class="btn btn-primary float-left" type="submit">Back</button></a>
                         <button class="btn btn-success float-right" type="submit">Finish</button>
+
                     </div>
                 </form>
             </div>

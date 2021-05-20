@@ -9,10 +9,8 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
-                            Photo
+                            Policy
                         </h1>
-                        <div class="page-header-subtitle">An extended version of the DataTables library, customized for
-                            SB Admin Pro</div>
                     </div>
                 </div>
             </div>
@@ -21,17 +19,22 @@
     <div class="container mt-n10">
         <div class="card mb-4">
             <div class="card-header">
-                Add Photo
+                View Policy
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.chalet.storePhoto',$chalets) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.policy.store',$chalet) }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="photo">Photo</label>
-                        <input type="file" name="photo" id="photo" class="form-control">
+                        <label for="title">Title</label>
+                        <input class="form-control" name="title" id="title" type="text" placeholder="Customer Policy" value="{{ $policy->title }}"/>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success float-right" type="submit">Finish</button>
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="10">{{ $policy->description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <a href="{{ route('admin.chalet.show',$chalet) }}"><button class="btn btn-primary float-left" type="button">Back</button></a>
+                        <button class="btn btn-danger float-right" type="submit">Update</button>
                     </div>
                 </form>
             </div>

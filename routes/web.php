@@ -84,3 +84,18 @@ Route::get('/admin/chalet/{chalet}/photo','Admin\ChaletController@createPhoto')-
 Route::post('/admin/chalet/{chalet}/photo','Admin\ChaletController@storePhoto')->name('admin.chalet.storePhoto');
 
 Route::get('/admin/{chalet}/chalet','Admin\ChaletController@show')->name('admin.chalet.show');
+
+//Chalet //Room
+Route::get('/admin/chalet/{chalet}/room/create','Admin\RoomController@create')->name('admin.room.create');
+Route::post('/admin/chalet/{chalet}/room/create','Admin\RoomController@store')->name('admin.room.store');
+Route::get('/admin/chalet/{chalet}/room/{room}/edit','Admin\RoomController@edit')->name('admin.room.edit');
+
+
+//Chalet //Policy
+Route::get('/admin/chalet/{chalet}/policy/create','Admin\PolicyController@create')->name('admin.policy.create');
+Route::post('/admin/chalet/{chalet}/policy/create','Admin\PolicyController@store')->name('admin.policy.store');
+Route::get('/admin/chalet/{chalet}/policy/{policy}/edit','Admin\PolicyController@edit')->name('admin.policy.edit');
+
+//Chalet //Photo
+Route::get('/admin/chalet/{chalet}/photo/create','Admin\PhotoController@create')->name('admin.photo.create');
+Route::post('/admin/chalet/{chalet}/photo/create','Admin\PhotoController@store')->name('admin.photo.store');
