@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 namespace Database\Seeders;
 
@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-            BedType::class,
-            BedroomType::class,
-        ]);
+        $this->call(UserSeeder::class);
+        $this->call(BedType::class);
+        $this->call(BedroomType::class);
+        $this->call(DummyReview::class);
+        $this->call(ReportTitle::class);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -13,24 +15,19 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request,User $user){
-         /* dd($request->all()); */
+        //   dd($request->all(),$user->all()); 
         $this->validate(request(), [
             'name' => 'required',
-            'email' => 'required'
+            'email' => ['required', Rule::unique('users')->ignore($user->id)],
         ]);
 
-        $user = $user->update($request->all());
-
-
-        // $data = $request->only('name','email');
+        $data = $request->only('name','email');
 
         // $user->name = $data['name'];
         // $user->email = $data['email'];
         // $user->save();
         
-        // $user->update($data);
-
-        // $user->update($request->only(['name','email']));
+         $user->update($data);
 
         return redirect(route('admin.account.profile'));
     }

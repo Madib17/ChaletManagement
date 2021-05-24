@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -16,14 +18,14 @@ class SecurityController extends Controller
         $request->validate([
             'currentPassword' => ['required', new MatchOldPassword],
             'newPassword' => ['required'],
-            'confirmPassword' => ['same:new_password'],
+            'confirmPassword' => ['same:newPassword'],
         ]);
 
-        $data = request()->only(['currentPassword', 'newPassword', 'confirmPassword']);
+        $user->update([
+            'password' => Hash::make($request->newPassword),
+        ]);
 
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->newPassword)]);
-
-        return redirect(route('admin.user.profile'));
+        return redirect()->back();
     }
 
 }

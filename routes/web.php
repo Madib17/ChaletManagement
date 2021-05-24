@@ -48,6 +48,9 @@ Route::post('/admin/account/security','Admin\SecurityController@update')->name('
 Route::get('/admin/accommodation','Admin\AccommodationController@index')->name('admin.accommodation.index');
 Route::get('/admin/accommodation/create','Admin\AccommodationController@create')->name('admin.accommodation.create');
 Route::post('/admin/accommodation/store','Admin\AccommodationController@store')->name('admin.accommodation.store');
+Route::get('/admin/accommodation/{accommodation}/destroy','Admin\AccommodationController@destroy')->name('admin.accommodation.destroy');
+Route::get('/admin/accommodation/{accommodation}/edit','Admin\AccommodationController@edit')->name('admin.accommodation.edit');
+Route::post('/admin/accommodation/{accommodation}/update','Admin\AccommodationController@update')->name('admin.accommodation.update');
 
 
 //User
@@ -58,6 +61,7 @@ Route::post('/admin/user/add','Admin\UserController@store')->name('admin.user.st
 
 //Report
 Route::get('/admin/report','Admin\ReportController@index')->name('admin.report.index');
+Route::get('/admin/{report}/report','Admin\ReportController@destroy')->name('admin.report.destroy');
 
 
 //Chalet
@@ -84,6 +88,9 @@ Route::get('/admin/chalet/{chalet}/photo','Admin\ChaletController@createPhoto')-
 Route::post('/admin/chalet/{chalet}/photo','Admin\ChaletController@storePhoto')->name('admin.chalet.storePhoto');
 
 Route::get('/admin/{chalet}/chalet','Admin\ChaletController@show')->name('admin.chalet.show');
+Route::get('/admin/{chalet}/chalet/edit','Admin\ChaletController@edit')->name('admin.chalet.edit');
+Route::post('/admin/{chalet}/chalet/update','Admin\ChaletController@update')->name('admin.chalet.update');
+
 
 //Chalet //Room
 Route::get('/admin/chalet/{chalet}/room/create','Admin\RoomController@create')->name('admin.room.create');
@@ -99,3 +106,4 @@ Route::get('/admin/chalet/{chalet}/policy/{policy}/edit','Admin\PolicyController
 //Chalet //Photo
 Route::get('/admin/chalet/{chalet}/photo/create','Admin\PhotoController@create')->name('admin.photo.create');
 Route::post('/admin/chalet/{chalet}/photo/create','Admin\PhotoController@store')->name('admin.photo.store');
+

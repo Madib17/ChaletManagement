@@ -11,10 +11,8 @@ use App\Models\Review;
 class ReportController extends Controller
 {
     public function index(){
-        $data = DB::table('reports')
-            ->join('reviews', 'reports.id', '=', 'reviews.report_id')
-            ->select('reports.*', 'reviews.detail')
-            ->get();
+        
+        $report = Report::all();
 
             // dd($data->all());
 
@@ -22,8 +20,14 @@ class ReportController extends Controller
 
         //return view('admin.report.index', $data);
 
-        return view('admin.report.index')->with('reports', $data);
+        return view('admin.report.index')->with('reports', $report);
     }
 
+    public function destroy(Report $report){
+        $report->delete();
+        $report->review->delete();
+
+        return redirect()->back();
+    }
 
 }

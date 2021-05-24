@@ -26,7 +26,7 @@
                         <p class="h4">Description</p>
                      </div>
                      <div class="col">
-                        <a href="{{ route('admin.accommodation.create') }}"><button
+                        <a href="{{ route('admin.chalet.edit',$chalet) }}"><button
                             class="btn btn-primary float-right">Edit Chalet</button></a>
                      </div>
                  </div>
@@ -130,7 +130,7 @@
                             <img class="card-img-top" src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" alt="{{ $photo->name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $photo->name }}</h5>
-                                <p class="card-text">{{ $photo->name }}</p>
+                                <p class="card-text">{{ $photo->name }} {{ $photo->id }}</p>
                             </div>
                         </div>
                          {{-- <img src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" class="img-thumbnail rounded mx-auto d-block lift"> --}}

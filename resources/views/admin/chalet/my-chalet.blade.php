@@ -60,8 +60,6 @@
                                 <td>
                                     <a href="{{ route('admin.chalet.show', $chalet->id) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i
                                         data-feather="eye" ></i></button></a>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i
-                                        data-feather="edit"></i></button>
                                     <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
                                             data-feather="trash-2"></i></button>
                                 </td>

@@ -11,8 +11,8 @@
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
                             Accommodation
                         </h1>
-                        <div class="page-header-subtitle">An extended version of the DataTables library, customized for
-                            SB Admin Pro</div>
+                       {{--  <div class="page-header-subtitle">An extended version of the DataTables library, customized for
+                            SB Admin Pro</div> --}}
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col ">List Of Accommodation</div>
                     <div class="col "><a href="{{ route('admin.accommodation.create') }}"><button
-                                class="btn btn-primary float-right">Add Accommodation</button></a></div>
+                                class="btn btn-primary btn-sm float-right">Add Accommodation</button></a></div>
                 </div>
             </div>
             <div class="card-body">
@@ -51,10 +51,10 @@
                                 <td>{{ $accommodation->name }}</td>
                                 <td>{{ $accommodation->type }}</td>
                                 <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i
-                                            data-feather="more-vertical"></i></button>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                            data-feather="trash-2"></i></button>
+                                    <a href="{{ route('admin.accommodation.edit',$accommodation->id) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i
+                                            data-feather="edit"></i></button></a>
+                                    <a href="{{ route('admin.accommodation.destroy',$accommodation->id) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                            data-feather="trash-2"></i></button></a>
                                 </td>
                             </tr>
                             @endforeach

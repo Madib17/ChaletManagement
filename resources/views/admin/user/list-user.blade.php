@@ -11,8 +11,8 @@
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
                             User
                         </h1>
-                        <div class="page-header-subtitle">An extended version of the DataTables library, customized for
-                            SB Admin Pro</div>
+                        {{-- <div class="page-header-subtitle">An extended version of the DataTables library, customized for
+                            SB Admin Pro</div> --}}
                     </div>
                 </div>
             </div>
@@ -32,8 +32,9 @@
                     <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Admin Name</th>
-                                <th>Admin Email</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -41,6 +42,7 @@
                             <tr>
                                 <th>Admin Name</th>
                                 <th>Admin Email</th>
+                                <th>Type</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
@@ -49,6 +51,7 @@
                             <tr>
                             <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ Str::ucfirst($user->type) }}</td>
                                 <td>
                                     <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
                                             data-feather="trash-2"></i></button>
@@ -56,53 +59,6 @@
                             </tr>
                             @endforeach
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="card mb-4">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col ">List Of Owner</div>
-
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="datatable">
-                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Owner Name</th>
-                                <th>Owner Email</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Owner Name</th>
-                                <th>Owner Email</th>
-                                <th>Actions</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>Affefudin Jamal</td>
-                                <td>affef@medkad.com</td>
-                                <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                            data-feather="trash-2"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Zuhaily Sabran</td>
-                                <td>zuhaily@medkad.com</td>
-                                <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                            data-feather="trash-2"></i></button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

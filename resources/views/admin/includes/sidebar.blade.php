@@ -12,9 +12,9 @@
             <div class="collapse" id="collapsePages" data-parent="#accordionSidenav">
                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
                     <!-- Nested Sidenav Accordion (Pages -> Account)-->
-                    <a class="nav-link" href="{{ route('admin.chalet.list-chalet') }}">List Chalet</a>
-                    <a class="nav-link" href="{{ route('admin.chalet.add') }}">Add Chalet</a>
                     <a class="nav-link" href="{{ route('admin.chalet.my-chalet') }}">My Chalet</a>
+                    <a class="nav-link" href="{{ route('admin.chalet.add') }}">Add Chalet</a>
+                    <a class="nav-link" href="{{ route('admin.chalet.list-chalet') }}">List Chalet</a>
                 </nav>
             </div>
             <!-- Sidenav Menu Heading (Core)-->

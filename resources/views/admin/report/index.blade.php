@@ -11,8 +11,8 @@
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
                             Report
                         </h1>
-                        <div class="page-header-subtitle">An extended version of the DataTables library, customized for
-                            SB Admin Pro</div>
+                        {{-- <div class="page-header-subtitle">An extended version of the DataTables library, customized for
+                            SB Admin Pro</div> --}}
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Report ID</th>
-                                    <th>Report Type</th>
+                                    <th>Type</th>
+                                    <th>Chalet</th>
                                     <th>Report Detail</th>
                                     <th>Report Date</th>
                                     <th>Actions</th>
@@ -49,13 +49,15 @@
                             <tbody>
                                 @foreach ($reports as $report)
                                 <tr>
-                                    <td>{{ $report->id }}</td>
-                                    <td>{{ $report->type }}</td>
-                                    <td>{{ $report->detail }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($report->created_at)->diffForHumans() }}</td>
+                                    <td>{{ Str::title($report->title->title) }}</td>
+                                    <td>{{ $report->review->chalet->name }}</td>
+                                    <td>{{ $report->review->detail }}</td>
+                                    @if (!is_null($report->created_at))
+                                    <td>{{ \Carbon\Carbon::parse($report->created_at)->diffForHumans() }}</td> 
+                                    @endif
                                     <td>
-                                        <button class="btn btn-datatable btn-icon btn-transparent-dark" ><i
-                                                data-feather="trash-2"></i></button>
+                                        <a href="{{ route('admin.report.destroy', $report->id) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark" ><i
+                                                data-feather="trash-2"></i></button></a>
                                     </td>
                                 </tr>
                                     @endforeach

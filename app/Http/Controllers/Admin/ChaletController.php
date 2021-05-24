@@ -164,4 +164,24 @@ class ChaletController extends Controller
         return view('admin.chalet.show')->with('chalet',$chalet);
     }
 
+    public function edit(Chalet $chalet){
+        return view('admin.chalet.edit')->with('chalet',$chalet)->with('districts',District::all())->with('cities',City::all())->with('states',State::all())->with('accommodations',Accommodation::all());
+    }
+
+    public function update(Request $request, Chalet $chalet){
+        $this->validate(request(),[
+            'name' => 'required',
+            'description' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'poscode' => 'required',
+            'district_id' => 'required',
+        ]);
+
+        $chalet->update($request->all());
+        $chalet->accommodations()->sync($request->accommodations);
+
+         return redirect()->route('admin.chalet.show', ['chalet' => $chalet]);
+    }
 }
