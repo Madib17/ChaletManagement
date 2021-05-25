@@ -26,8 +26,10 @@
                         <p class="h4">Description</p>
                      </div>
                      <div class="col">
-                        <a href="{{ route('admin.chalet.edit',$chalet) }}"><button
-                            class="btn btn-primary float-right">Edit Chalet</button></a>
+                         @if ($chalet->user_id == Auth::id())
+                         <a href="{{ route('admin.chalet.edit',$chalet) }}"><button
+                             class="btn btn-primary float-right">Edit Chalet</button></a>
+                         @endif
                      </div>
                  </div>
                  <div class="row mt-2">
@@ -68,10 +70,12 @@
                      <div class="col">
                         <p class="h4">Rooms</p> 
                      </div>
+                     @if ($chalet->user_id == Auth::id())
                      <div class="col">
                         <a href="{{ route('admin.room.create', $chalet->id) }}"><button
                             class="btn btn-primary float-right">Add More Room</button></a>
-                     </div>
+                     </div>  
+                         @endif
                  </div>
                  <div class="row">
                      @foreach ($chalet->rooms as $room)
@@ -95,8 +99,10 @@
                          <p class="h4">Policies</p>
                      </div>
                      <div class="col">
+                        @if ($chalet->user_id == Auth::id())
                         <a href="{{ route('admin.policy.create',$chalet) }}"><button
                             class="btn btn-primary float-right">Add More Policy</button></a>
+                        @endif
                      </div>
                  </div>
                  <div class="row">
@@ -119,8 +125,10 @@
                          <p class="h4">Photo</p>
                      </div>
                      <div class="col">
+                        @if ($chalet->user_id == Auth::id())
                         <a href="{{ route('admin.photo.create',$chalet) }}"><button
                             class="btn btn-primary float-right">Add More Photo</button></a>
+                        @endif
                      </div>
                  </div>
                  <div class="row">

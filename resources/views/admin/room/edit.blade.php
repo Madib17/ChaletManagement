@@ -21,9 +21,10 @@
         <div class="card mb-4">
             <div class="card-header">
                 Update Room
+                <a href="{{ route('admin.room.destroy',['chalet'=>$chalet,'room'=>$room]) }}"><button class="btn btn-red float-right" type="button">Delete</button></a>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.room.store',$chalet) }}" method="POST">
+                <form action="{{ route('admin.room.update',['chalet'=>$chalet,'room'=>$room]) }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="bedroom_id" class="control-label">Bedroom</label>
