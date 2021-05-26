@@ -11,8 +11,8 @@
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
                             My Chalet 
                         </h1>
-                        <div class="page-header-subtitle">An extended version of the DataTables library, customized for
-                            SB Admin Pro</div>
+                        {{-- <div class="page-header-subtitle">An extended version of the DataTables library, customized for
+                            SB Admin Pro</div> --}}
                     </div>
                 </div>
             </div>
@@ -58,10 +58,10 @@
                                     <td>{{ $chalet->email }}</td>
                                     <td>{{ $chalet->district->city->state->name }}</td>
                                 <td>
-                                    <a href="{{ route('admin.chalet.show', $chalet->id) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i
-                                        data-feather="eye" ></i></button></a>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                            data-feather="trash-2"></i></button>
+                                    <a href="{{ route('admin.chalet.show', $chalet->id) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark mr-2" ><i
+                                        data-feather="eye"></i></button></a>
+                                    <a href="{{ route('admin.chalet.destroy', $chalet->id) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark mr-2" ><i
+                                            data-feather="trash-2"></i></button></a>
                                 </td>
                             </tr>
                             @endforeach

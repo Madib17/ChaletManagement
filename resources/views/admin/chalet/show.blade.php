@@ -131,14 +131,14 @@
                         @endif
                      </div>
                  </div>
-                 <div class="row">
+                 <div class="row mt-2">
                     @foreach ($chalet->photos as $photo)
                      <div class="col">
                         <div class="card lift">
                             <img class="card-img-top" src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" alt="{{ $photo->name }}">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $photo->name }}</h5>
-                                <p class="card-text">{{ $photo->name }} {{ $photo->id }}</p>
+                                <a href="{{ route('admin.photo.destroy', ['chalet'=>$chalet,'photo'=>$photo]) }}"><button class="btn btn-datatable btn-icon btn-transparent-dark "><i
+                                    data-feather="trash-2" ></i></button></a>
                             </div>
                         </div>
                          {{-- <img src="{{ asset('/storage/'.$photo->name) }}" alt="{{ $photo->name }}" class="img-thumbnail rounded mx-auto d-block lift"> --}}
@@ -163,7 +163,7 @@
                                          <i data-feather="more-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#!">Report</a>
+                                            <a class="dropdown-item" href="{{ route('admin.report.create',['report'=>$r]) }}">Report</a>
                                         </div>
                                     </div>
                                 </div>

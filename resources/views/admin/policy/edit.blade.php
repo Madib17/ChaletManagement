@@ -20,9 +20,10 @@
         <div class="card mb-4">
             <div class="card-header">
                 View Policy
+                <a href="{{ route('admin.policy.destroy',['chalet'=>$chalet,'policy'=>$policy]) }}"><button class="btn btn-danger float-right" type="button">Delete</button></a>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.policy.store',$chalet) }}" method="POST">
+                <form action="{{ route('admin.policy.update',['chalet'=>$chalet,'policy'=>$policy]) }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="title">Title</label>

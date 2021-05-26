@@ -23,6 +23,15 @@ class ReportController extends Controller
         return view('admin.report.index')->with('reports', $report);
     }
 
+    public function create($title_id,$review_id){
+        $report->create([
+            'title_id' => $title_id,
+            'review_id' => $review_id,
+        ]);
+        return redirect()->route('admin.chalet.show', ['chalet' => $chalet]);
+
+    }
+
     public function destroy(Report $report){
         $report->delete();
         $report->review->delete();

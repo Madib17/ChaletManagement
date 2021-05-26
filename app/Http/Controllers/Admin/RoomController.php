@@ -37,6 +37,30 @@ class RoomController extends Controller
         return view('admin.room.edit')->with('chalet', $chalet)->with('room',$room)->with('bedrooms',Bedroom::all())->with('beds',Bed::all()); 
     }
 
+    public function update(Request $request, Chalet $chalet, Room $room){
+        $this->validate(request(),[
+            'bedroom_id' => 'required',
+            'bed_id' => 'required',
+            'adult' => 'required',
+            'child' => 'required',
+            'price' => 'required',
+            'size' => 'required',
+            'detail' => 'required',
+        ]);
+
+        $room->update($request->only('bedroom_id','bed_id','adult','child','price','size','detail'));
+
+        return redirect()->route('admin.chalet.show', ['chalet' => $chalet]);
+
+    }
+
+    public function destroy(Chalet $chalet, Room $room){
+        $room->delete();
+
+        return redirect()->route('admin.chalet.show', ['chalet' => $chalet]);
+
+    }
+
 
     
 }

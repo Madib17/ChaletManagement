@@ -46,7 +46,7 @@
             <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
                     <!-- Nested Sidenav Accordion (Layout -> Navigation)-->
-                    <a class="nav-link" href="{{ route('admin.user.list') }}"  data-target="#collapseLayoutSidenavVariations" aria-expanded="false" aria-controls="collapseLayoutSidenavVariations">
+                    <a class="nav-link" href="{{ route('admin.user.index') }}"  data-target="#collapseLayoutSidenavVariations" aria-expanded="false" aria-controls="collapseLayoutSidenavVariations">
                         List User</a>
                     <a class="nav-link" href="{{ route('admin.user.add') }}" data-target="#collapseLayoutContainers" aria-expanded="false" aria-controls="collapseLayoutContainers">
                         Add User</a>

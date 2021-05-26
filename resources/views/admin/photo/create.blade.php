@@ -30,7 +30,7 @@
                       </div>
                     <div class="form-group">
                         <a href="{{ route('admin.chalet.show',$chalet) }}"><button class="btn btn-primary float-left" type="submit">Back</button></a>
-                        <button class="btn btn-success float-right" type="submit">Finish</button>
+                        <button class="btn btn-success float-right" type="submit">Add Photo</button>
 
                     </div>
                 </form>
