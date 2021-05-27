@@ -29,4 +29,22 @@ class PolicyController extends Controller
     public function edit(Chalet $chalet, Policy $policy){
         return view('admin.policy.edit')->with('chalet',$chalet)->with('policy',$policy);
     }
+
+    public function update(Request $request, Chalet $chalet, Policy $policy){
+        $this->validate(request(),[
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        $policy->update($request->all());
+
+        return redirect()->route('admin.chalet.show', ['chalet' => $chalet]);
+
+    }
+
+    public function destroy(Chalet $chalet, Policy $policy){
+        $policy->delete();
+
+        return redirect()->route('admin.chalet.show', ['chalet' => $chalet]);
+    }
 }

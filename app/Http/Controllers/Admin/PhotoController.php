@@ -29,5 +29,17 @@ class PhotoController extends Controller
         return redirect()->route('admin.chalet.show', ['chalet' => $chalet->id]);
     }
 
+    public function destroy(Chalet $chalet, Photo $photo){
+
+
+        // dd($photo->all());
+        Storage::disk('public')->delete($photo->name);
+        $photo->delete();
+        
+
+        return redirect()->route('admin.chalet.show', ['chalet' => $chalet->id]);
+
+    }
+
     
 }

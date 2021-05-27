@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Admin 
 //Address
 Route::get('/admin/address/state','Admin\StateController@create')->name('admin.address.state');
-Route::POST('/admin/address/state-store','Admin\StateController@store')->name('admin.address.storeState');
+Route::post('/admin/address/state-store','Admin\StateController@store')->name('admin.address.storeState');
 
 Route::get('/admin/address/city','Admin\CityController@create')->name('admin.address.city');
 Route::post('/admin/address/city-store','Admin\CityController@store')->name('admin.address.storeCity');
@@ -54,7 +54,7 @@ Route::post('/admin/accommodation/{accommodation}/update','Admin\AccommodationCo
 
 
 //User
-Route::get('/admin/user','Admin\UserController@index')->name('admin.user.list');
+Route::get('/admin/user','Admin\UserController@index')->name('admin.user.index');
 Route::get('/admin/user/add','Admin\UserController@create')->name('admin.user.add');
 Route::post('/admin/user/add','Admin\UserController@store')->name('admin.user.store');
 
@@ -62,6 +62,7 @@ Route::post('/admin/user/add','Admin\UserController@store')->name('admin.user.st
 //Report
 Route::get('/admin/report','Admin\ReportController@index')->name('admin.report.index');
 Route::get('/admin/{report}/report','Admin\ReportController@destroy')->name('admin.report.destroy');
+Route::get('/admin/{report}/report/{review}/review','Admin\ReportController@create')->name('admin.report.create');
 
 
 //Chalet
@@ -90,20 +91,27 @@ Route::post('/admin/chalet/{chalet}/photo','Admin\ChaletController@storePhoto')-
 Route::get('/admin/{chalet}/chalet','Admin\ChaletController@show')->name('admin.chalet.show');
 Route::get('/admin/{chalet}/chalet/edit','Admin\ChaletController@edit')->name('admin.chalet.edit');
 Route::post('/admin/{chalet}/chalet/update','Admin\ChaletController@update')->name('admin.chalet.update');
+Route::get('/admin/{chalet}/chalet/destroy','Admin\ChaletController@destroy')->name('admin.chalet.destroy');
+
 
 
 //Chalet //Room
 Route::get('/admin/chalet/{chalet}/room/create','Admin\RoomController@create')->name('admin.room.create');
 Route::post('/admin/chalet/{chalet}/room/create','Admin\RoomController@store')->name('admin.room.store');
 Route::get('/admin/chalet/{chalet}/room/{room}/edit','Admin\RoomController@edit')->name('admin.room.edit');
+Route::post('/admin/chalet/{chalet}/room/{room}/update','Admin\RoomController@update')->name('admin.room.update');
+Route::get('/admin/chalet/{chalet}/room/{room}/destroy','Admin\RoomController@destroy')->name('admin.room.destroy');
 
 
 //Chalet //Policy
 Route::get('/admin/chalet/{chalet}/policy/create','Admin\PolicyController@create')->name('admin.policy.create');
 Route::post('/admin/chalet/{chalet}/policy/create','Admin\PolicyController@store')->name('admin.policy.store');
 Route::get('/admin/chalet/{chalet}/policy/{policy}/edit','Admin\PolicyController@edit')->name('admin.policy.edit');
+Route::post('/admin/chalet/{chalet}/policy/{policy}/update','Admin\PolicyController@update')->name('admin.policy.update');
+Route::get('/admin/chalet/{chalet}/policy/{policy}/destroy','Admin\PolicyController@destroy')->name('admin.policy.destroy');
 
 //Chalet //Photo
 Route::get('/admin/chalet/{chalet}/photo/create','Admin\PhotoController@create')->name('admin.photo.create');
 Route::post('/admin/chalet/{chalet}/photo/create','Admin\PhotoController@store')->name('admin.photo.store');
+Route::get('/admin/chalet/{chalet}/photo/{photo}/destroy','Admin\PhotoController@destroy')->name('admin.photo.destroy');
 

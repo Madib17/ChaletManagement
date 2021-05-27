@@ -16,6 +16,7 @@ use App\Models\Room;
 use App\Models\Photo;
 use App\Models\Bedroom;
 use App\Models\Bed;
+use App\Models\Title;
 
 class ChaletController extends Controller
 {
@@ -157,11 +158,11 @@ class ChaletController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return redirect()->route('admin.chalet.show', ['chalet' => $chalet->id]);
     }
 
     public function show(Chalet $chalet){
-        return view('admin.chalet.show')->with('chalet',$chalet);
+        return view('admin.chalet.show')->with('chalet',$chalet)->with('title',Title::all());
     }
 
     public function edit(Chalet $chalet){
@@ -183,5 +184,12 @@ class ChaletController extends Controller
         $chalet->accommodations()->sync($request->accommodations);
 
          return redirect()->route('admin.chalet.show', ['chalet' => $chalet]);
+    }
+
+    public function destroy(Chalet $chalet){
+        $chalet->delete();
+
+        return redirect()->route('admin.chalet.my-chalet');
+
     }
 }
