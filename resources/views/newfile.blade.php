@@ -1,0 +1,1 @@
+<html>Blade File</html>
